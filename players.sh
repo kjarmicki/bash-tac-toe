@@ -1,0 +1,1 @@
+playerCurrent="X"
