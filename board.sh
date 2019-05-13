@@ -14,16 +14,16 @@ boardFields=(
 boardGetFieldValue() {
   x=$1
   y=$2
-  position="$((x * y))"
-  return ${boardFields[$position]}
+  position="$((y * boardHeight + x))"
+  echo "${boardFields[$position]}"
 }
 
 boardSetFieldValue() {
   x=$1
   y=$2
   value=$3
-  position="$((x * y))"
-  boardFields[position]=value
+  position="$((y * boardHeight + x))"
+  boardFields[$position]=$value
 }
 
 boardIsFieldEmpty() {

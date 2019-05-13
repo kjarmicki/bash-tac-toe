@@ -6,6 +6,10 @@
 . ./input.sh
 . ./render.sh
 
+gameTryToPlaceLetter() {
+  boardSetFieldValue "${cursorPosition[0]}" "${cursorPosition[1]}" "$playerCurrentField"
+}
+
 while [ : ]; do
   clear
   render
@@ -22,6 +26,9 @@ while [ : ]; do
       ;;
     "${inputCodeRight}")
       cursorMoveRight
+      ;;
+    "${inputCodeAction}")
+      gameTryToPlaceLetter
       ;;
   esac
 done

@@ -3,7 +3,7 @@ cursorPosition=(0 0)
 cursorMoveLeft() {
   cursorPosition[0]=$((${cursorPosition[0]}-1))
   if [ "${cursorPosition[0]}" -eq -1 ]; then
-    cursorPosition[0]=$boardWidth-1
+    cursorPosition[0]=$(($boardWidth-1))
   fi
 }
 
@@ -17,7 +17,7 @@ cursorMoveRight() {
 cursorMoveUp() {
   cursorPosition[1]=$((${cursorPosition[1]}-1))
   if [ "${cursorPosition[1]}" -eq -1 ]; then
-    cursorPosition[1]=$boardWidth-1
+    cursorPosition[1]=$(($boardWidth-1))
   fi
 }
 

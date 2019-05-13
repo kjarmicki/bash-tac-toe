@@ -1,1 +1,1 @@
-playerCurrent="X"
+playerCurrentField=$boardFieldX

@@ -1,12 +1,14 @@
-inputUp=w
-inputDown=s
-inputLeft=a
-inputRight=d
+inputUp="w"
+inputDown="s"
+inputLeft="a"
+inputRight="d"
+inputAction="l"
 
 inputCodeUp="UP"
 inputCodeDown="DOWN"
 inputCodeLeft="LEFT"
 inputCodeRight="RIGHT"
+inputCodeAction="ACTION"
 inputCodeUnknown="UNKNOWN"
 
 inputRead() {
@@ -23,6 +25,9 @@ inputRead() {
       ;;
     "${inputRight}")
       echo $inputCodeRight
+      ;;
+    "${inputAction}")
+      echo $inputCodeAction
       ;;
     *)
       echo $inputCodeUnknown
