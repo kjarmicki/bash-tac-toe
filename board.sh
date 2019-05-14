@@ -2,19 +2,27 @@ boardFieldEmpty=0
 boardFieldX=1
 boardFieldO=2
 
-boardWidth=3
-boardHeight=3
+boardWidth=4
+boardHeight=4
 
-boardFields=(
-  $boardFieldEmpty $boardFieldEmpty $boardFieldEmpty
-  $boardFieldEmpty $boardFieldEmpty $boardFieldEmpty
-  $boardFieldEmpty $boardFieldEmpty $boardFieldEmpty
-)
+boardGetPosition() {
+  x=$1
+  y=$2
+  echo "$((y * boardHeight + x))"
+}
+
+boardFields=()
+for ((y=0; y<$boardHeight; y++)); do
+  for ((x=0; x<$boardHeight; x++)); do
+    position=$(boardGetPosition $x $y)
+    boardFields[$position]=$boardFieldEmpty
+  done
+done
 
 boardGetFieldValue() {
   x=$1
   y=$2
-  position="$((y * boardHeight + x))"
+  position=$(boardGetPosition $x $y)
   echo "${boardFields[$position]}"
 }
 
@@ -22,7 +30,7 @@ boardSetFieldValue() {
   x=$1
   y=$2
   value=$3
-  position="$((y * boardHeight + x))"
+  position=$(boardGetPosition $x $y)
   boardFields[$position]=$value
 }
 

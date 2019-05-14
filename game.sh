@@ -11,7 +11,6 @@ gameTryToPlaceLetter() {
 }
 
 while [ : ]; do
-  clear
   render
   gameInputCode=$(inputRead)
   case $gameInputCode in
