@@ -35,10 +35,10 @@ boardSetFieldValue() {
 }
 
 boardIsFieldEmpty() {
-  value=boardGetFieldValue $1 $2
+  value=$(boardGetFieldValue $1 $2)
   if [ $value -eq $boardFieldEmpty ]; then
-    return 0
+    echo 1
   else
-    return 1
+    echo 0
   fi
 }

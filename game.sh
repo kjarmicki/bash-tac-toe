@@ -7,7 +7,11 @@
 . ./render.sh
 
 gameTryToPlaceLetter() {
-  boardSetFieldValue "${cursorPosition[0]}" "${cursorPosition[1]}" "$playerCurrentField"
+  isFieldAtCurrentPositionEmpty=$(boardIsFieldEmpty "${cursorPosition[0]}" "${cursorPosition[1]}")
+  if [ "$isFieldAtCurrentPositionEmpty" -eq 1 ]; then
+    boardSetFieldValue "${cursorPosition[0]}" "${cursorPosition[1]}" "$playerCurrentField"
+    playerSwitch
+  fi
 }
 
 while [ : ]; do
