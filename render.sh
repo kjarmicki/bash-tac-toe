@@ -15,12 +15,12 @@ renderFieldValue() {
 
 renderStatus() {
   echo "Now placing: $(renderFieldValue $playerCurrentField)"
-  echo ""
+  echo "C: ${debug}"
 }
 
 renderBoard() {
-  for ((y=0; y<$boardHeight; y++)); do
-    for ((x=0; x<$boardHeight; x++)); do
+  for ((y=0; y<$boardSize; y++)); do
+    for ((x=0; x<$boardSize; x++)); do
       value=$(boardGetFieldValue $x $y)
       renderedValue=$(renderFieldValue $value)
       format=""
@@ -28,7 +28,7 @@ renderBoard() {
         format="\e[7m"
       fi
       echo -ne "${format}${renderedValue}\e[0m"
-      if [ $x -eq $((boardWidth - 1)) ]; then
+      if [ $x -eq $((boardSize - 1)) ]; then
         echo ""
       fi
     done
