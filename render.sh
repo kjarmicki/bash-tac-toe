@@ -15,7 +15,11 @@ renderFieldValue() {
 
 renderStatus() {
   echo "Now placing: $(renderFieldValue $playerCurrentField)"
-  echo "C: ${debug}"
+  echo ""
+  echo "Score: "
+  echo "Player X: ${playerXScore}"
+  echo "Player O: ${playerOScore}"
+  echo ""
 }
 
 renderBoard() {

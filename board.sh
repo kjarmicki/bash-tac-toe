@@ -2,7 +2,7 @@ boardFieldEmpty=0
 boardFieldX=1
 boardFieldO=2
 
-boardSize=4
+boardSize=3
 boardConsecutiveScoredThreshold=2
 
 boardGetPosition() {
@@ -44,11 +44,11 @@ boardIsFieldEmpty() {
 }
 
 boardFindAndRemoveConsecutiveFields() {
+  boardConsecutiveFieldsRemoved=0
   consecutiveHorizontal=1
   consecutiveVertical=1
   consecutiveDiagonalLeft=1
   consecutiveDiagonalRight=1
-  lastPosition=$((boardSize * boardSize - 1))
 
   for ((y=0; y<$boardSize; y++)); do
     for ((x=0; x<$boardSize; x++)); do
@@ -58,16 +58,10 @@ boardFindAndRemoveConsecutiveFields() {
 
       if [ "$currentField" -eq "$boardFieldEmpty" ] ||
          [ "$currentField" -ne "${boardFields[$previousPosition]}" ] ||
-         [ $((x % boardSize)) -eq 0 ] ||
-         [ "$position" -eq "$lastPosition" ]; then
-           if [ "$consecutiveHorizontal" -gt "$boardConsecutiveScoredThreshold" ]; then
-             echo "$consecutiveHorizontal"
-             while [ "$consecutiveHorizontal" -gt 0 ]; do
-               position=$((position - 1))
-               boardFields[$position]=$boardFieldEmpty
-               consecutiveHorizontal=$((consecutiveHorizontal - 1))
-             done
-             return
+         [ $((x % boardSize)) -eq 0 ]; then
+          if [ "$consecutiveHorizontal" -gt "$boardConsecutiveScoredThreshold" ]; then
+            boardRemoveHorizontalFields
+            return
           fi
           consecutiveHorizontal=1
       else
@@ -75,5 +69,20 @@ boardFindAndRemoveConsecutiveFields() {
       fi
 
     done
+  done
+
+  if [ "$consecutiveHorizontal" -gt "$boardConsecutiveScoredThreshold" ]; then
+    position=$((position + 1))
+    boardRemoveHorizontalFields
+    return
+  fi
+}
+
+boardRemoveHorizontalFields() {
+  boardConsecutiveFieldsRemoved=$consecutiveHorizontal
+  while [ "$consecutiveHorizontal" -gt 0 ]; do
+    position=$((position - 1))
+    boardFields[$position]=$boardFieldEmpty
+    consecutiveHorizontal=$((consecutiveHorizontal - 1))
   done
 }

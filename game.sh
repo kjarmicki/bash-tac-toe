@@ -11,25 +11,31 @@ gameTryToPlaceLetter() {
   if [ "$isFieldAtCurrentPositionEmpty" -eq 1 ]; then
     boardSetFieldValue "${cursorPosition[0]}" "${cursorPosition[1]}" "$playerCurrentField"
     boardFindAndRemoveConsecutiveFields
+    if [ "$boardConsecutiveFieldsRemoved" -gt 0 ]; then
+      playerCurrentAddScore $boardConsecutiveFieldsRemoved
+    fi
     playerSwitch
   fi
 }
 
-# debug
-# gameTryToPlaceLetter
-# cursorMoveDown
-# gameTryToPlaceLetter
-# cursorMoveUp
-# cursorMoveRight
-# gameTryToPlaceLetter
-# cursorMoveDown
-# gameTryToPlaceLetter
-# cursorMoveUp
-# cursorMoveRight
-# gameTryToPlaceLetter
-# cursorMoveDown
-# gameTryToPlaceLetter
-# cursorMoveUp
+
+cursorMoveDown
+cursorMoveDown
+gameTryToPlaceLetter
+cursorMoveUp
+gameTryToPlaceLetter
+cursorMoveRight
+cursorMoveDown
+gameTryToPlaceLetter
+cursorMoveUp
+gameTryToPlaceLetter
+cursorMoveRight
+cursorMoveDown
+gameTryToPlaceLetter
+cursorMoveUp
+gameTryToPlaceLetter
+
+echo "${boardFields[8]}"
 # cursorMoveRight
 # gameTryToPlaceLetter
 
