@@ -18,26 +18,36 @@ gameTryToPlaceLetter() {
   fi
 }
 
-
-cursorMoveDown
-cursorMoveDown
-gameTryToPlaceLetter
-cursorMoveUp
-gameTryToPlaceLetter
-cursorMoveRight
-cursorMoveDown
-gameTryToPlaceLetter
-cursorMoveUp
-gameTryToPlaceLetter
-cursorMoveRight
-cursorMoveDown
-gameTryToPlaceLetter
-cursorMoveUp
-gameTryToPlaceLetter
-
-echo "${boardFields[8]}"
-# cursorMoveRight
+# # horizontal
+# cursorMoveDown
+# cursorMoveDown
 # gameTryToPlaceLetter
+# cursorMoveUp
+# gameTryToPlaceLetter
+# cursorMoveRight
+# cursorMoveDown
+# gameTryToPlaceLetter
+# cursorMoveUp
+# gameTryToPlaceLetter
+# cursorMoveRight
+# cursorMoveDown
+# gameTryToPlaceLetter
+# cursorMoveUp
+# gameTryToPlaceLetter
+
+# vertical
+gameTryToPlaceLetter
+cursorMoveRight
+gameTryToPlaceLetter
+cursorMoveLeft
+cursorMoveDown
+gameTryToPlaceLetter
+cursorMoveRight
+gameTryToPlaceLetter
+cursorMoveLeft
+cursorMoveDown
+gameTryToPlaceLetter
+
 
 while [ : ]; do
   render
