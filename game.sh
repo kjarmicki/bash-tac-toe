@@ -18,37 +18,6 @@ gameTryToPlaceLetter() {
   fi
 }
 
-# # horizontal
-# cursorMoveDown
-# cursorMoveDown
-# gameTryToPlaceLetter
-# cursorMoveUp
-# gameTryToPlaceLetter
-# cursorMoveRight
-# cursorMoveDown
-# gameTryToPlaceLetter
-# cursorMoveUp
-# gameTryToPlaceLetter
-# cursorMoveRight
-# cursorMoveDown
-# gameTryToPlaceLetter
-# cursorMoveUp
-# gameTryToPlaceLetter
-
-# vertical
-gameTryToPlaceLetter
-cursorMoveRight
-gameTryToPlaceLetter
-cursorMoveLeft
-cursorMoveDown
-gameTryToPlaceLetter
-cursorMoveRight
-gameTryToPlaceLetter
-cursorMoveLeft
-cursorMoveDown
-gameTryToPlaceLetter
-
-
 while [ : ]; do
   render
   gameInputCode=$(inputRead)
